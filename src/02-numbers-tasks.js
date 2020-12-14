@@ -19,8 +19,8 @@
  *   5, 10 => 50
  *   5, 5  => 25
  */
-function getRectangleArea(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleArea(width, height) {
+  return width * height;
 }
 
 
@@ -35,8 +35,8 @@ function getRectangleArea(/* width, height */) {
  *   3.14 => 19.729201864543903
  *   0    => 0
  */
-function getCicleCircumference(/* radius */) {
-  throw new Error('Not implemented');
+function getCicleCircumference(radius) {
+  return 2 * radius * Math.PI;
 }
 
 /**
@@ -51,8 +51,8 @@ function getCicleCircumference(/* radius */) {
  *  10, 0  => 5
  *  -3, 3  => 0
  */
-function getAverage(/* value1, value2 */) {
-  throw new Error('Not implemented');
+function getAverage(value1, value2) {
+  return (value1 / 2) + (value2 / 2);
 }
 
 /**
@@ -70,8 +70,12 @@ function getAverage(/* value1, value2 */) {
  *   (0,0) (1,0)    => 1
  *   (-5,0) (10,-10) => 18.027756377319946
  */
-function getDistanceBetweenPoints(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getDistanceBetweenPoints(x1, y1, x2, y2) {
+  let xs = x2 - x1;
+  let ys = y2 - y1;
+  xs *= xs;
+  ys *= ys;
+  return Math.sqrt(xs + ys);
 }
 
 /**
@@ -109,9 +113,14 @@ function getLinearEquationRoot(/* a, b */) {
  *   (0,1) (0,1)     => 0
  *   (0,1) (1,2)     => 0
  */
-function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  let angle = (Math.atan2(y2, x2) - Math.atan2(y1, x1));
+  if (angle < 0) {
+    angle += 2 * Math.PI;
+  }
+  return angle;
 }
+
 
 /**
  * Returns a last digit of a integer number.
@@ -125,8 +134,12 @@ function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
  *     5     => 5
  *     0     => 0
  */
-function getLastDigit(/* value */) {
-  throw new Error('Not implemented');
+function getLastDigit(value) {
+  if (value.length === 1) {
+    return value;
+  }
+  const valueToString = value.toString().slice(-1);
+  return valueToString;
 }
 
 
@@ -141,8 +154,8 @@ function getLastDigit(/* value */) {
  *     '37'     => 37
  * '-525.5'     => -525.5
  */
-function parseNumberFromString(/* value */) {
-  throw new Error('Not implemented');
+function parseNumberFromString(value) {
+  return parseFloat(value);
 }
 
 /**
@@ -158,8 +171,11 @@ function parseNumberFromString(/* value */) {
  *   3,3,3   => 5.196152422706632
  *   1,2,3   => 3.741657386773941
  */
-function getParallelipidedDiagonal(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getParallelipidedDiagonal(a, b, c) {
+  const aa = a * a;
+  const bb = b * b;
+  const cc = c * c;
+  return (Math.sqrt(aa + bb + cc));
 }
 
 /**
@@ -179,8 +195,9 @@ function getParallelipidedDiagonal(/* a, b, c */) {
  *   1678, 2  => 1700
  *   1678, 3  => 2000
  */
-function roundToPowerOfTen(/* num, pow */) {
-  throw new Error('Not implemented');
+function roundToPowerOfTen(num, pow) {
+  const powOfTen = 10 ** pow;
+  return Math.round(num / powOfTen) * powOfTen;
 }
 
 /**
@@ -203,6 +220,7 @@ function roundToPowerOfTen(/* num, pow */) {
 function isPrime(/* n */) {
   throw new Error('Not implemented');
 }
+
 
 /**
  * Tries to convert value to number and returns it if conversion was successfull;
